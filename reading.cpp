@@ -101,7 +101,7 @@ int main(int argc, char **argv)
     dangle3 = angle_unty(avs3,deltaf,avh3,deltaf);
     dangle4 = angle_unty(avs4,deltaf,avh4,deltaf);
     
-    std::cout << angle1 << " +/- " << dangle1  << "\n";
+    //std::cout << angle1 << " +/- " << dangle1  << "\n";
 
     //se calcula el radio segun las ciudades para las que se midieron los angulos
 
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
     rf=average(avgr);
     drf=average(avgdr);
 
-    std::cout << rf << " +/- " << drf  << "\n";
+    std::cout << "\n" << "El radio terrestre, segun las medidas tomadas, es: "  << rf << " +/- " << drf << " metros" << "\n";
 
     return 0;
 }
@@ -169,6 +169,6 @@ double radius (double dist, double phi1, double phi2)
 
 double radius_unty (double d, double phi1, double phi2, double dphi1, double dphi2)
 {
-    return sqrt((d*d)/(pow(phi2-phi1,4))*(dphi1*dphi1+dphi2*dphi2));
+    return sqrt((d*d)/(pow(phi2-phi1,4))*(dphi1*dphi1+dphi2*dphi2)); //hay que ver que esto no bote problemas, porque pow trabaja con floats y le estoy metiendo doubles
 }
 
