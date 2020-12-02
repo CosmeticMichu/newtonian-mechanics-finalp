@@ -6,15 +6,6 @@
 typedef std::vector<double> length; 
 
 int N = 5; //numero de datos que fueron tomados
-//se declaran los vectores que van a guardar las mediciones
-length s1(N, 0.0);
-length s2(N, 0.0);
-length s3(N, 0.0);
-length s4(N, 0.0);
-length h1(N, 0.0);
-length h2(N, 0.0);
-length h3(N, 0.0);
-length h4(N, 0.0);
 
 double average (length);
 double uncertainty (double);
@@ -25,6 +16,16 @@ double radius_unty (double d, double phi1, double phi2, double dphi1, double dph
 
 int main(int argc, char **argv)
 {
+    //se declaran los vectores que van a guardar las mediciones
+    length s1(N, 0.0);
+    length s2(N, 0.0);
+    length s3(N, 0.0);
+    length s4(N, 0.0);
+    length h1(N, 0.0);
+    length h2(N, 0.0);
+    length h3(N, 0.0);
+    length h4(N, 0.0);
+    
     //falta fijar la precision de cout
     double avs1 = 0.0, avs2 = 0.0, avs3 = 0.0, avs4 = 0.0, avh1 = 0.0, avh2 = 0.0, avh3 = 0.0, avh4 = 0.0; //se crean vectores de datos high (h) y shadow (s)
     double angle1 = 0.0, angle2 = 0.0, angle3 = 0.0, angle4 = 0.0; //se crean variables para guardar angulos formados por la altura del objeto y su sombra
