@@ -48,7 +48,8 @@ bastante engorroso, toncs mjr implementamos un codigo que haga eso por nosotros,
 y encima de que nos ahorra este trabajo de hacerlo a mano, nos permite organizar
 mejor el pdf porque vamos a poner solo unos cuantos datos y un poco de la teoria
 que se usa para implementar el programa, y no un poco de tablas ahi. Por otro lado, seria bueno que, si no
-tiene linux o macOs, se descargue un compilador de C++ para windows o instale linux en una maquina virtual para que pruebe,
+tiene linux o macOs, se descargue un compilador de C++ para windows, instale
+linux en una maquina virtual, o se cree una cuenta en repl.it para que pruebe,
 cacharree el codigo y se familiarice un poco, aunque en principio ustedes solo tienen que
 rotar los datos que tomaron, ya sea en un .txt -con el nombre que quieran-, o solo ordenados en un
 mensaje por wha, y yo ejecuto el codigo y ponemos los datos en el .pdf
