@@ -5,7 +5,7 @@
 
 typedef std::vector<double> length; 
 
-int N = 5; //numero de datos que fueron tomados
+const int N = 5; //numero de datos que fueron tomados
 
 double average (length);
 double uncertainty (double);
