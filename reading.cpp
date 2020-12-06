@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
-
+//pollo
 typedef std::vector<double> length; 
 
 const int N = 5; //numero de datos que fueron tomados
