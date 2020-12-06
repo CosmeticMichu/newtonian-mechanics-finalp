@@ -3,8 +3,6 @@
 #include <vector>
 #include <cmath>
 
-//comentario desde windows
-
 typedef std::vector<double> length; 
 
 const int N = 5; //numero de datos que fueron tomados
