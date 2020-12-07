@@ -11,10 +11,16 @@ double angle (length s, length h);
 double angle_unty (length s, length h, double ucty);
 double radius (double dist, double phi1, double phi2);
 double radius_unty (double d, double phi1, double phi2, double dphi1, double dphi2);
-double gravity(double length, double period);
+double gravity (length L, length T);
+double gravity_ucty (length l, length T, double ucty, double uctyT);
+double var(length data);
+double mass(double r, double g);
+double mass_ucty(double r, double dr, double g, double dg);
 
 int main(int argc, char **argv)
 {
+	//declaraciones
+	
 	double angle1 = 0.0, angle2 = 0.0, angle3 = 0.0, angle4 = 0.0; //se crean variables para guardar angulos formados por la altura del objeto y su sombra
 	double dB_A = 137470, dB_Az = 212270, dB_C = 90590, dA_Az = 348050, dA_C = 46900, dC_Az = 302000; //variables para la distancia (N-S) que separa las distintas ciudades
 	double dangle1 = 0.0, dangle2 = 0.0, dangle3 = 0.0, dangle4 = 0.0; //variables para guardar la incertidumbre en la medicion del angulo
@@ -22,9 +28,19 @@ int main(int argc, char **argv)
     double drB_A = 0.0, drB_Az = 0.0, drB_C = 0.0, drA_Az = 0.0, drA_C = 0.0, drC_Az = 0.0; //variables para incertidumbre en el radio
 	const double delta = std::atof(argv[1]); //lee incertidumbre de medicion de s y h desde la terminal
 	const double deltal = std::atof(argv[2]); //lee la incertidumbre de medicion de l desde la terminal
-	
+	const double deltaT = std::atof(argv[3]); //lee la incertidumbre de medicion de T desde la terminal
+
+	double gA = 0.0, gAz = 0.0, gB = 0.0, gC = 0.0;
+	double dgA = 0.0, dgAz = 0.0, dgB = 0.0, dgC = 0.0;
+ 
+	double gf = 0.0;
+	double dgf = 0.0;
+
 	double rf = 0.0; //guarda el radio de la tierra segun las mediciones en distintas ciudades
     double drf = 0.0; //guarda la inertidumbre de medicion del radio de la tierra entre las zonas medidas
+	
+	double M = 0.0; //estos valores guardaran finalmente los valores de masa para la tierra y su respectiva incertidumbre
+	double dM = 0.0;
 	
 	//numero de datos que fueron tomados para s, h y l
 	const int N = 5;
@@ -43,7 +59,7 @@ int main(int argc, char **argv)
     length h3(N, 0.0);
     length h4(N, 0.0);
 	
-	//vectores para promediar los valores
+	//vectores para promediar los valores del radio
 	length avgr(6, 0.0);
     length avgdr(6, 0.0);
 
@@ -59,6 +75,10 @@ int main(int argc, char **argv)
     length T2(NT, 0.0);
 	length T3(NT, 0.0);
 	length T4(NT, 0.0);
+	
+	//vectores para promediar los valores del radio
+	length avgg(4, 0.0);
+    length avgdg(4, 0.0);
 	
 	//impresion en consola
 	
@@ -158,6 +178,34 @@ int main(int argc, char **argv)
 
     std::cout << "\n" << "El radio terrestre, segun las medidas tomadas, es: "  << rf << " +/- " << drf << " metros" << "\n";
 	
+	gA = gravity(l1, T1);
+	gAz = gravity(l2, T2);
+	gB = gravity(l3, T3);
+	gC = gravity(l4, T4);
+
+	dgA = gravity_ucty(l1,T1,deltal,deltaT);
+	dgAz = gravity_ucty(l2,T2,deltal,deltaT);
+	dgB = gravity_ucty(l3,T3,deltal,deltaT);
+	dgC = gravity_ucty(l4,T4,deltal,deltaT);
+	
+	std::cout << "\n" << "El valor de gravedad medido en Ayapel - Cordoda, fue : " << gA << " +/- " << dgA << "\n";
+	std::cout << "El valor de gravedad medido en Aguazul - Casanare, fue : " << gAz << " +/- " << dgAz << "\n";
+	std::cout << "El valor de gravedad medido en Barrancabermeja - Santander, fue : " << gB << " +/- " << dgB << "\n";
+	std::cout << "El valor de gravedad medido en Cucuta - Norte de Santander, fue : " << gC << " +/- " << dgC << "\n";
+
+	avgg[0]=gA, avgg[1]=gAz, avgg[2]=gB, avgg[3]=gC;
+    //avgdg[0]=dgA, avgdg[1]=dgAz, avgdg[2]=dgB, avgdg[3]=dgC;
+
+	gf = average(avgg);
+	dgf = var(avgg);
+	
+	std::cout << "\n" << "El valor promedio para la gravedad es: " << gf << " +/- " << dgf << "\n";
+	
+	M = mass(rf,gf);
+	dM = mass_ucty(rf,drf,gf,dgf);
+	
+	std::cout << "\n" << "El valor estimado para la masa de la tierra es: " << M << " +/- " << dM << std::endl;
+	
 	return 0;
 }
 
@@ -171,15 +219,23 @@ double average(length l)
     return sum/l.size();
 }
 
-double uncertainty (length data, double ucty)
+double var(length data)
 {
 	double var = 0.0;
 	double sum = 0.0;
 	for(auto &val : data){
 		sum += (val-average(data))*(val-average(data)); 
 	}
-	var = (1/(data.size()-1))*sum;
-    return sqrt(var+ucty);
+	var = sum*(1.0/(data.size()-1.0));
+	
+	return var;
+}
+
+double uncertainty (length data, double ucty)
+{
+	double vr = 0.0;
+	vr = var(data);
+    return sqrt(vr+ucty);
 }
 
 double angle (length s, length h)
@@ -217,5 +273,42 @@ double radius (double dist, double phi1, double phi2)
 
 double radius_unty (double d, double phi1, double phi2, double dphi1, double dphi2)
 {
-    return sqrt((d*d)/(pow(phi2-phi1,4))*(dphi1*dphi1+dphi2*dphi2)); //hay que ver que esto no bote problemas, porque pow trabaja con floats y le estoy metiendo doubles
+	return sqrt((d*d)/(pow(phi2-phi1,4))*(dphi1*dphi1+dphi2*dphi2)); //hay que ver que esto no bote problemas, porque pow trabaja con floats y le estoy metiendo doubles
+}
+
+double gravity (length L, length T)
+{
+	double l = 0.0;
+	double t = 0.0;
+	
+	l = average(L);
+	t = average(T);
+	
+	return 4.0*M_PI*M_PI*((l)/(t*t));
+}
+
+double gravity_ucty (length l, length T, double ucty, double uctyT)
+{
+	double L = 0.0;
+	double dL = 0.0;
+	double t = 0.0;
+	double dt = 0.0;
+	
+	L = average(l);
+	dL = uncertainty(l, ucty);
+	t = average(T);
+	dt = uncertainty(T, uctyT);
+	return ((4.0*M_PI*M_PI)/(t))*sqrt(dL*dL+(((2*L)/(t))*((2*L)/(t)))*(dt)*(dt));
+}
+
+double mass(double r, double g)
+{
+	double G = 6.674*std::pow(10,-11);
+	return (1.0/G)*(g*r*r);
+}
+
+double mass_ucty(double r, double dr, double g, double dg)
+{
+	double G = 6.674*std::pow(10,-11);
+	return ((r*r)/(G))*sqrt(dg*dg+((2.0*g)/(r))*((2.0*g)/(r))*dr*dr);
 }
