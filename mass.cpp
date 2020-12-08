@@ -16,6 +16,7 @@ double gravity_ucty (length l, length T, double ucty, double uctyT);
 double var(length data);
 double mass(double r, double g);
 double mass_ucty(double r, double dr, double g, double dg);
+double rad_to_deg (double rad); //por si se necesita imprimir valores en grados
 
 int main(int argc, char **argv)
 {
@@ -248,7 +249,12 @@ double angle (length s, length h)
 	
     double rad = 0.0;
     rad = atan(S/H);
-    return (rad*180.0)/M_PI;
+    return rad;
+}
+
+//double rad_to_deg (double rad)
+{
+	return (rad*180.0)/M_PI
 }
 
 double angle_unty (length s, length h, double ucty)
