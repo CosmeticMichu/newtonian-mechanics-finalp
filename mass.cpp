@@ -248,7 +248,7 @@ double angle (length s, length h)
 	S = average(s);
 	
     double rad = 0.0;
-    rad = atan(S/H);
+    rad = atan((M_PI/2.0)-(S/H));
     return rad;
 }
 
