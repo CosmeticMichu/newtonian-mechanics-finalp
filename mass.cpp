@@ -227,7 +227,7 @@ double var(length data)
 	for(auto &val : data){
 		sum += (val-average(data))*(val-average(data)); 
 	}
-	var = sum*(1.0/(data.size()-1.0));
+	var = (1/(data.size()-1))*sum;
 	
 	return var;
 }
@@ -236,7 +236,7 @@ double uncertainty (length data, double ucty)
 {
 	double vr = 0.0;
 	vr = var(data);
-    return sqrt(vr+ucty);
+    return sqrt(vr+ucty*ucty);
 }
 
 double angle (length s, length h)
