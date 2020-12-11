@@ -1,0 +1,4 @@
+El valor de gravedad medido en Ayapel - Cordoda, fue : 9.81496 +/- 0.132859
+El valor de gravedad medido en Aguazul - Casanare, fue : 9.65058 +/- 0.260139
+El valor de gravedad medido en Barrancabermeja - Santander, fue : 9.84483 +/- 0.108598
+El valor de gravedad medido en Cucuta - Norte de Santander, fue : 9.73736 +/- 0.670602

@@ -1,0 +1,4 @@
+Angulo medido en Ayapel: 34.2496 +/- 0.229452
+Angulo medido en Aguazul: 33.9302 +/- 0.32426
+Angulo medido en Barrancabermeja: 33.0869 +/- 0.288907
+Angulo medido en Cucuta: 31.452 +/- 0.148266

@@ -167,11 +167,15 @@ int main(int argc, char **argv)
     dangle3 = angle_unty(s3, h3, delta);
     dangle4 = angle_unty(s4, h4, delta);
 
-    std::cout << "\n"  << "angAyapel: " << angle1*180/M_PI << " +/- " << dangle1*180/M_PI << "\n";
-    std::cout << "angAguazul: " << angle2*180/M_PI << " +/- " << dangle2*180/M_PI << "\n";
-    std::cout << "angBarrancabermeja: " << angle3*180/M_PI << " +/- " << dangle3*180/M_PI << "\n";
-    std::cout << "angCucuta: " << angle4*180/M_PI << " +/- " << dangle4*180/M_PI << "\n";
+    std::ofstream foutdeg ("degrees.txt");
+    
+    foutdeg << "Angulo medido en Ayapel: " << angle1*180/M_PI << " +/- " << dangle1*180/M_PI << "\n";
+    foutdeg << "Angulo medido en Aguazul: " << angle2*180/M_PI << " +/- " << dangle2*180/M_PI << "\n";
+    foutdeg << "Angulo medido en Barrancabermeja: " << angle3*180/M_PI << " +/- " << dangle3*180/M_PI << "\n";
+    foutdeg << "Angulo medido en Cucuta: " << angle4*180/M_PI << " +/- " << dangle4*180/M_PI << "\n";
 
+    foutdeg.close();
+    
 	rB_A = radius(dB_A,angle3,angle1);
     drB_A = radius_unty(dB_A,angle3,angle1,dangle3,dangle1);
     rB_Az = radius(dB_Az,angle3, angle2);
@@ -221,12 +225,16 @@ int main(int argc, char **argv)
 	dgAz = gravity_ucty(l2,T2,deltal,deltaT);
 	dgB = gravity_ucty(l3,T3,deltal,deltaT);
 	dgC = gravity_ucty(l4,T4,deltal,deltaT);
-	
-	std::cout << "\n" << "El valor de gravedad medido en Ayapel - Cordoda, fue : " << gA << " +/- " << dgA << "\n";
-	std::cout << "El valor de gravedad medido en Aguazul - Casanare, fue : " << gAz << " +/- " << dgAz << "\n";
-	std::cout << "El valor de gravedad medido en Barrancabermeja - Santander, fue : " << gB << " +/- " << dgB << "\n";
-	std::cout << "El valor de gravedad medido en Cucuta - Norte de Santander, fue : " << gC << " +/- " << dgC << "\n";
 
+    std::ofstream foutgrav ("gravity.txt");
+    
+	foutgrav << "El valor de gravedad medido en Ayapel - Cordoda, fue : " << gA << " +/- " << dgA << "\n";
+	foutgrav << "El valor de gravedad medido en Aguazul - Casanare, fue : " << gAz << " +/- " << dgAz << "\n";
+	foutgrav << "El valor de gravedad medido en Barrancabermeja - Santander, fue : " << gB << " +/- " << dgB << "\n";
+	foutgrav << "El valor de gravedad medido en Cucuta - Norte de Santander, fue : " << gC << " +/- " << dgC << "\n";
+
+    foutgrav.close();
+    
 	avgg[0]=gA, avgg[1]=gAz, avgg[2]=gB, avgg[3]=gC;
     //avgdg[0]=dgA, avgdg[1]=dgAz, avgdg[2]=dgB, avgdg[3]=dgC;
 
