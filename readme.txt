@@ -1,7 +1,7 @@
 This code was designed for newtonian mehanics final project in National
 University of Colombia newtonian mechanics course for the 2020-2 period.
 
-For compiling, you have to put in the command line the uncertainty of your
+For compiling, you have to put-in the command line the uncertainty of your
 measurement instruments (half of the apreciation) for example if our executable
 file is called a.out, then for compiling and not getting a segmentation fault,
 we have to put in the executable file followed of the uncertainty for high and
