@@ -187,12 +187,12 @@ int main(int argc, char **argv)
 	
     std::ofstream fout ("radius.txt");
     
-	fout << "Radio medido entre Barrancabermeja y Ayapel: " << rB_A << " +/- " << drB_A  << "\n";
-	fout << "Radio medido entre Barrancabermeja y Aguazul: " << rB_Az << " +/- " << drB_Az << "\n";
-	fout << "Radio medido entre Barrancabermeja y Cucuta: " << rB_C << " +/- " << drB_C << "\n";
-	fout << "Radio medido entre Ayapel y Aguazul: " << rA_Az << " +/- " << drA_Az << "\n";
-	fout << "Radio medido entre Ayapel y Cucuta: " << rA_C << " +/- " << drA_C << "\n";
-	fout << "Radio medido entre Cucuta y Aguazul: " << rC_Az << " +/- " << drC_Az << "\n";
+	fout << "Radio medido entre Barrancabermeja y Ayapel: " << rB_A << " +/- " << drB_A << " metros" << "\n";
+	fout << "Radio medido entre Barrancabermeja y Aguazul: " << rB_Az << " +/- " << drB_Az << " metros" << "\n";
+	fout << "Radio medido entre Barrancabermeja y Cucuta: " << rB_C << " +/- " << drB_C << " metros" << "\n";
+	fout << "Radio medido entre Ayapel y Aguazul: " << rA_Az << " +/- " << drA_Az << " metros" << "\n";
+	fout << "Radio medido entre Ayapel y Cucuta: " << rA_C << " +/- " << drA_C << " metros" << "\n";
+	fout << "Radio medido entre Cucuta y Aguazul: " << rC_Az << " +/- " << drC_Az << " metros" << "\n";
 
     fout.close();
     

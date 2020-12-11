@@ -1,6 +1,6 @@
-Radio medido entre Barrancabermeja y Ayapel: 6.77392e+06 +/- 2.14934e+06
-Radio medido entre Barrancabermeja y Aguazul: 1.44214e+07 +/- 7.42656e+06
-Radio medido entre Barrancabermeja y Cucuta: 3.17484e+06 +/- 630615
-Radio medido entre Ayapel y Aguazul: 6.24318e+07 +/- 7.76412e+07
-Radio medido entre Ayapel y Cucuta: 960520 +/- 93794.5
-Radio medido entre Cucuta y Aguazul: 6.9822e+06 +/- 1.00456e+06
+Radio medido entre Barrancabermeja y Ayapel: 6.77392e+06 +/- 2.14934e+06 metros
+Radio medido entre Barrancabermeja y Aguazul: 1.44214e+07 +/- 7.42656e+06 metros
+Radio medido entre Barrancabermeja y Cucuta: 3.17484e+06 +/- 630615 metros
+Radio medido entre Ayapel y Aguazul: 6.24318e+07 +/- 7.76412e+07 metros
+Radio medido entre Ayapel y Cucuta: 960520 +/- 93794.5 metros
+Radio medido entre Cucuta y Aguazul: 6.9822e+06 +/- 1.00456e+06 metros
