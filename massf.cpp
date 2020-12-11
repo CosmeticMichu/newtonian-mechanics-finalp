@@ -91,7 +91,7 @@ int main(int argc, char **argv)
     length avgdg(4, 0.0);
 	
 	// carga de datos e impresion de los mismos en consola
-	
+
 	std::cout << "Los valores ingresados fueron: " << "\n";
     std::cout << "s1(A)" << "\t" << "h1(A)" << "\t" << "l1(A)" << "\t" << "s2(Az)" << "\t" << "h2(Az)" << "\t" << "l2(Az)" << "\t" << "s3(B)" << "\t" << "h3(B)" << "\t" << "l3(B)" << "\t" << "s4(C)" << "\t" << "h4(C)" << "\t" << "l4(C)" << "\n"; //imprime en consola los datos ingresados para poder verificar    std::ifstream fin ("input.txt");
 
@@ -231,8 +231,8 @@ int main(int argc, char **argv)
 	
 	std::cout << "\n" << "El valor promedio para la gravedad es: " << gf << " +/- " << dgf << "\n";
 	
-	M = mass(rf,gf);
-	dM = mass_ucty(rf,drf,gf,dgf);
+	M = mass(rfc,gf);
+	dM = mass_ucty(rfc,drfc,gf,dgf);
 	
 	std::cout << "\n" << "El valor estimado para la masa de la tierra es: " << M << " +/- " << dM << std::endl;
 	
