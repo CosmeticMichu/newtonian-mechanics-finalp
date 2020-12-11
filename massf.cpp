@@ -129,10 +129,7 @@ int main(int argc, char **argv)
 	}
     
     fin.close();
-	
-	std::cout << "promedio: " << average(s4) << "\n";
-	std::cout << "varianza: " << var(s4) << "\n";
-	std::cout << "incertidumbre: " << uncertainty(s4,0.001) << "\n";
+
 	std::cout << "\n" << "Para las longitudes, y " << "\n";
 	std::cout << "\n" << "T1(A)" << "\t" << "T2(Az)" << "\t" << "T3(B)" << "\t" << "T4(C)" << "\n"; //imprime en consola los datos ingresados para poder verificar std::ifstream finT ("input2.txt");
 
@@ -169,7 +166,12 @@ int main(int argc, char **argv)
     dangle2 = angle_unty(s2, h2, delta);
     dangle3 = angle_unty(s3, h3, delta);
     dangle4 = angle_unty(s4, h4, delta);
-	
+
+    std::cout << "\n"  << "angAyapel: " << angle1*180/M_PI << " +/- " << dangle1*180/M_PI << "\n";
+    std::cout << "angAguazul: " << angle2*180/M_PI << " +/- " << dangle2*180/M_PI << "\n";
+    std::cout << "angBarrancabermeja: " << angle3*180/M_PI << " +/- " << dangle3*180/M_PI << "\n";
+    std::cout << "angCucuta: " << angle4*180/M_PI << " +/- " << dangle4*180/M_PI << "\n";
+
 	rB_A = radius(dB_A,angle3,angle1);
     drB_A = radius_unty(dB_A,angle3,angle1,dangle3,dangle1);
     rB_Az = radius(dB_Az,angle3, angle2);
@@ -194,8 +196,8 @@ int main(int argc, char **argv)
     avgdr[0]=drB_A, avgdr[1]=drB_Az, avgdr[2]=drB_C, avgdr[3]=drA_Az, avgdr[4]=drA_C, avgdr[5]=drC_Az;
 	
 	
-	avgrc[0]=rB_A, avgrc[1]=rB_C, avgrc[3]=rC_Az;
-    avgdrc[0]=drB_A, avgdrc[1]=drB_C, avgdrc[3]=drC_Az;
+	avgrc[0]=rB_A, avgrc[1]=rB_C, avgrc[2]=rC_Az;
+    avgdrc[0]=drB_A, avgdrc[1]=drB_C, avgdrc[2]=drC_Az;
 	
 	rf=average(avgr);
     drf=average(avgdr);
