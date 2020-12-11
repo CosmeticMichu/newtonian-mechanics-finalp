@@ -16,3 +16,7 @@ With uncertaninty given in mks (International system of units)
 The console will display some averaged quantities like average radius, average
 corrected radius and average gravity, as well as the input values for you
 to verificate, and the final Erath's mass.
+
+Physics Deparment, National University of Colombia, Bogota, Colombia
+
+-Emmanuel Arias Polanco
