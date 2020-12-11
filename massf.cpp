@@ -185,13 +185,17 @@ int main(int argc, char **argv)
     rC_Az = radius(dC_Az,angle4, angle2);
     drC_Az = radius_unty(dC_Az,angle4,angle2,dangle4,dangle2);
 	
-	std::cout << "\n" << "rB_A: " << rB_A << "\n";
-	std::cout << "rB_Az: " << rB_Az << "\n";
-	std::cout << "rB_C: " << rB_C << "\n";
-	std::cout << "rA_Az: " << rA_Az << "\n";
-	std::cout << "rA_C: " << rA_C << "\n";
-	std::cout << "rC_Az: " << rC_Az << "\n";
-	
+    std::ofstream fout ("radius.txt");
+    
+	fout << "Radio medido entre Barrancabermeja y Ayapel: " << rB_A << " +/- " << drB_A  << "\n";
+	fout << "Radio medido entre Barrancabermeja y Aguazul: " << rB_Az << " +/- " << drB_Az << "\n";
+	fout << "Radio medido entre Barrancabermeja y Cucuta: " << rB_C << " +/- " << drB_C << "\n";
+	fout << "Radio medido entre Ayapel y Aguazul: " << rA_Az << " +/- " << drA_Az << "\n";
+	fout << "Radio medido entre Ayapel y Cucuta: " << rA_C << " +/- " << drA_C << "\n";
+	fout << "Radio medido entre Cucuta y Aguazul: " << rC_Az << " +/- " << drC_Az << "\n";
+
+    fout.close();
+    
 	avgr[0]=rB_A, avgr[1]=rB_Az, avgr[2]=rB_C, avgr[3]=rA_Az, avgr[4]=rA_C, avgr[5]=rC_Az;
     avgdr[0]=drB_A, avgdr[1]=drB_Az, avgdr[2]=drB_C, avgdr[3]=drA_Az, avgdr[4]=drA_C, avgdr[5]=drC_Az;
 	
