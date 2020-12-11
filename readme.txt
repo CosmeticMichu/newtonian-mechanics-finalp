@@ -1,5 +1,5 @@
 This code was designed for newtonian mehanics final project in National
-University of Colombia newtonian mechanics course for the 2020-1 period.
+University of Colombia newtonian mechanics course for the 2020-2 period.
 
 For compiling, you have to put in the command line the uncertainty of your
 measurement instruments (half of the apreciation) for example if our executable
